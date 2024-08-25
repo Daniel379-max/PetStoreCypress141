@@ -1,0 +1,16 @@
+{
+    "id": 473357,
+    "category": {
+        "id": 1,
+        "name": "dog"
+    },
+    "name": "dogao",
+    "photoUrls": [
+
+    ],
+    "tags": [{
+        "id": 1,
+        "name": "vaccined"
+    }],
+    "status": "sold"
+}

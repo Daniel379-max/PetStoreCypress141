@@ -1,4 +1,6 @@
 import pet from '../fixtures/pet.json'
+import petAlterado from '../fixtures/petAlterado.json'
+import listaPets from '../fixtures/listaPet.json'
 
 describe('CRUD da entidade Pet', () => {
 
@@ -33,6 +35,53 @@ describe('CRUD da entidade Pet', () => {
             expect(body.tags[0].name).to.eq(pet.tags[0].name)
             expect(body.status).to.eq(pet.status)
 
+        })
+    })
+    it('PUT Pet', () => {
+        cy.request({
+            method: 'PUT',
+            url: '/pet',
+            body: petAlterado
+        }).then(({ status, body }) => {
+            expect(status).to.eq(200)
+            expect(body.id).to.eq(petAlterado.id)
+            expect(body.name).to.eq(petAlterado.name)
+            expect(body.category.id).to.eq(petAlterado.category.id)
+            expect(body.category.name).to.eq(petAlterado.category.name)
+            expect(body.tags[0].id).to.eq(petAlterado.tags[0].id)
+            expect(body.tags[0].name).to.eq(petAlterado.tags[0].name)
+            expect(body.status).to.eq(petAlterado.status)
+        })
+    })
+
+    it('DELETE Pet', () => {
+        cy.request({
+            url: `/pet/${pet.id}`,
+            method: 'DELETE'
+        }).then(({ status, body }) => {
+            expect(status).to.eq(200)
+            expect(body.code).to.eq(200)
+            expect(body.type).to.eq("unknown")
+            expect(body.message).to.eq(`${pet.id}`)
+        })
+    })
+
+    listaPets.forEach((element) => {
+        it(`POST Pet Data Driven - ${element.name}`, () => {
+            cy.request({
+                method: 'POST',
+                url: '/pet',
+                body: element
+            }).then(({ status, body }) => {
+                expect(status).to.eq(200)
+                expect(body.id).to.eq(element.id)
+                expect(body.name).to.eq(element.name)
+                expect(body.category.id).to.eq(element.category.id)
+                expect(body.category.name).to.eq(element.category.name)
+                expect(body.tags[0].id).to.eq(element.tags[0].id)
+                expect(body.tags[0].name).to.eq(element.tags[0].name)
+                expect(body.status).to.eq(element.status)
+            })
         })
     })
 })

@@ -1,0 +1,33 @@
+[{
+        "id": 145937602,
+        "category": {
+            "id": 1,
+            "name": "dog"
+        },
+        "name": "Caramelo",
+        "photoUrls": [
+            "string"
+        ],
+        "tags": [{
+            "id": 1,
+            "name": "vaccined"
+        }],
+        "status": "available"
+    },
+    {
+        "id": 145937603,
+        "category": {
+            "id": 1,
+            "name": "dog"
+        },
+        "name": "Paçoca",
+        "photoUrls": [
+            "string"
+        ],
+        "tags": [{
+            "id": 1,
+            "name": "vaccined"
+        }],
+        "status": "available"
+    }
+]
